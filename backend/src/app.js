@@ -15,7 +15,13 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 import authRoutes from './routes/auth.route.js';
+import productRoutes from './routes/product.route.js';
 
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+
+app.get('/', (_req, res) => {
+    res.send('E-commerce API is running');
+});
 
 export { app };
