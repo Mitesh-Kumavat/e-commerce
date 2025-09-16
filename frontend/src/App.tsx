@@ -1,33 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from "react-router-dom";
+import Login from "./pages/auth/login";
+import Signup from "./pages/auth/signup";
+import { PublicRoute } from "./components/wrappers/public-route";
+import { AdminRoute } from "./components/wrappers/admin-route";
+import { ProtectedRoute } from "./components/wrappers/protected-route";
+import NotFoundPage from "./pages/not-found";
+import AdminDashboard from "./pages/admin/admin-dashboard";
+import Home from "./pages/user/home";
+import UserLayout from "./components/layout/user-layout";
+import { ProductsPage } from "./pages/product/product-page";
+import { ProductDetailPage } from "./pages/product/product-detail-page";
+import { Toaster } from "@/components/ui/sonner";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+
+        {/* User only */}
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route index element={
+            <UserLayout>
+              <ProductsPage />
+            </UserLayout>
+          }
+          />
+
+          <Route path="/product/:id" element={
+            <UserLayout>
+              <ProductDetailPage />
+            </UserLayout>
+          }
+          />
+
+          <Route path='/orders' element={
+            <UserLayout>
+              <Home />
+            </UserLayout>
+          } />
+
+        </Route>
+
+        {/* Public route without login */}
+        <Route path="/" element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+
+        {/* Admin only */}
+        <Route path="/" element={<AdminRoute />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
+
+      </>
+    )
+  )
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <RouterProvider router={router} />
+      <Toaster />
     </>
   )
 }
