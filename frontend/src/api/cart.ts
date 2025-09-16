@@ -13,3 +13,19 @@ export const addToCart = async (data: CartData) => {
 
     return respone.data;
 }
+
+export const getCartOfUser = async () => {
+    const response = await axios.get(API_ROUTES.cart.getCart, {
+        withCredentials: true
+    })
+
+    return response.data;
+}
+
+export const deleteItemFromCart = async (productId: string) => {
+    const respone = await axios.delete(API_ROUTES.cart.deleteProductFromCart(productId), {
+        withCredentials: true
+    })
+
+    return respone.data;
+}

@@ -38,7 +38,7 @@ export const UserNavbar = () => {
                 <div className="flex-shrink-0 flex items-center">
                     <Link to="/" className="flex items-center space-x-2 text-lg font-bold">
                         <ShoppingBagIcon className="h-6 w-6 text-primary" />
-                        <span className="hidden md:block">E-Shop</span>
+                        <span className="hidden md:block">E-Commerce</span>
                     </Link>
                 </div>
 

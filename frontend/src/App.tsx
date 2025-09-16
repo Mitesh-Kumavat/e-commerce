@@ -11,11 +11,13 @@ import { AdminRoute } from "./components/wrappers/admin-route";
 import { ProtectedRoute } from "./components/wrappers/protected-route";
 import NotFoundPage from "./pages/not-found";
 import AdminDashboard from "./pages/admin/admin-dashboard";
-import Home from "./pages/user/home";
 import UserLayout from "./components/layout/user-layout";
-import { ProductsPage } from "./pages/product/product-page";
-import { ProductDetailPage } from "./pages/product/product-detail-page";
+import { ProductsPage } from "./pages/user/product-page";
+import { ProductDetailPage } from "./pages/user/product-detail-page";
 import { Toaster } from "@/components/ui/sonner";
+import OrderPage from "./pages/user/order";
+import CartPage from "./pages/user/cart";
+import ProfilePage from "./pages/user/profile";
 
 const App = () => {
 
@@ -42,7 +44,19 @@ const App = () => {
 
           <Route path='/orders' element={
             <UserLayout>
-              <Home />
+              <OrderPage />
+            </UserLayout>
+          } />
+
+          <Route path='/cart' element={
+            <UserLayout>
+              <CartPage />
+            </UserLayout>
+          } />
+
+          <Route path='/profile' element={
+            <UserLayout>
+              <ProfilePage />
             </UserLayout>
           } />
 
