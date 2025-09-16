@@ -19,13 +19,44 @@ import OrderPage from "./pages/user/order";
 import CartPage from "./pages/user/cart";
 import ProfilePage from "./pages/user/profile";
 import { CheckoutPage } from "./pages/user/checkout";
+import { AdminLayout } from "./components/layout/admin-layout";
+import AddProductPage from "./components/admin/add-product";
+import ManageProductsPage from "./components/admin/manage-products";
 
 const App = () => {
-
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+
+        {/* Admin only */}
+        <Route path="/" element={<AdminRoute />}>
+          <Route path="/admin" element={
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          } />
+
+          <Route path="/admin/add-product" element={
+            <AdminLayout>
+              <AddProductPage />
+            </AdminLayout>
+          } />
+
+          <Route path="/admin/manage-products" element={
+            <AdminLayout>
+              <ManageProductsPage />
+            </AdminLayout>
+          } />
+
+          <Route path="/admin/manage-users" element={
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          } />
+
+
+        </Route>
 
         {/* User only */}
         <Route path="/" element={<ProtectedRoute />}>
@@ -73,11 +104,6 @@ const App = () => {
         <Route path="/" element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-        </Route>
-
-        {/* Admin only */}
-        <Route path="/" element={<AdminRoute />}>
-          <Route path="/admin" element={<AdminDashboard />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

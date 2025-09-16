@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Loader2, Mail, Lock, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,7 +17,6 @@ type LoginForm = {
 
 export function LoginForm() {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const {
@@ -30,7 +29,6 @@ export function LoginForm() {
         mutationFn: login,
         onSuccess: (data) => {
             dispatch(loginSuccess(data?.data))
-            navigate("/");
         }
     })
 

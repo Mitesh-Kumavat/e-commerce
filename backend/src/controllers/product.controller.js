@@ -79,7 +79,10 @@ export const getProducts = async (req, res) => {
         let query = { isDeleted: false };
 
         if (keyword) {
-            query.$text = { $search: keyword };
+            query.$or = [
+                { name: { $regex: keyword, $options: 'i' } },
+                { description: { $regex: keyword, $options: 'i' } }
+            ];
         }
 
         if (category) {

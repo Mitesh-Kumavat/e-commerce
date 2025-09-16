@@ -1,25 +1,6 @@
 import { API_ROUTES } from '@/utils/api-routes';
 import axios from 'axios';
 
-
-interface ProductParams {
-    name: string,
-    description: string,
-    price: number,
-    stock: number,
-    category: string,
-    images: [File]
-}
-
-interface UpdateProducParams {
-    name: string,
-    description: string,
-    price: number,
-    stock: number,
-    category: string,
-    images: [File]
-}
-
 interface GetProductsParams {
     keyword?: string;
     category?: string;
@@ -33,7 +14,7 @@ export const getProducts = async (params: GetProductsParams = {}) => {
     const url = `${API_ROUTES.product.getProduct}?${queryString}`;
 
     const response = await axios.get(url, {
-        withCredentials: true
+        withCredentials: true,
     });
 
     return response.data;
@@ -56,7 +37,7 @@ export const deleteProductById = async (id: string) => {
     return response.data;
 }
 
-export const updateProductById = async (id: string, data: UpdateProducParams) => {
+export const updateProductById = async (id: string, data: any) => {
     const response = await axios.put(API_ROUTES.product.updateProductById(id), data, {
         withCredentials: true
     });
@@ -64,9 +45,12 @@ export const updateProductById = async (id: string, data: UpdateProducParams) =>
     return response.data;
 }
 
-export const addProduct = async (data: ProductParams) => {
-    const response = await axios.post(API_ROUTES.product.addProduct, { data }, {
-        withCredentials: true
+export const addProduct = async (data: any) => {
+    const response = await axios.post(API_ROUTES.product.addProduct, data, {
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
     });
 
     return response.data;
