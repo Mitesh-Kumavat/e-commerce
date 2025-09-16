@@ -4,6 +4,7 @@ import { verifyToken } from "../utils/jwtHandler.js";
 export const verifyUser = async (req, res, next) => {
     try {
         const token = req.cookies.authToken;
+
         if (!token) return res.status(401).json(new ApiResponse(401, null, "Unauthorized"));
 
         const decoded = await verifyToken(token);
