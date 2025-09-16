@@ -18,6 +18,7 @@ import { Toaster } from "@/components/ui/sonner";
 import OrderPage from "./pages/user/order";
 import CartPage from "./pages/user/cart";
 import ProfilePage from "./pages/user/profile";
+import { CheckoutPage } from "./pages/user/checkout";
 
 const App = () => {
 
@@ -57,6 +58,12 @@ const App = () => {
           <Route path='/profile' element={
             <UserLayout>
               <ProfilePage />
+            </UserLayout>
+          } />
+
+          <Route path='/checkout' element={
+            <UserLayout>
+              <CheckoutPage />
             </UserLayout>
           } />
 
