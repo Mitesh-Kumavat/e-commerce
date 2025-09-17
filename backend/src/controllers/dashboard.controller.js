@@ -14,7 +14,7 @@ export const getAdminDashboard = async (req, res) => {
         ]);
         const totalRevenue = totalRevenueAgg[0]?.total || 0;
 
-        const recentOrders = await Order.find({ status: { $ne: "Cancelled" } })
+        const recentOrders = await Order.find({ status: { $ne: "cancelled" } })
             .sort({ createdAt: -1 })
             .limit(5)
             .populate("user", "name email")

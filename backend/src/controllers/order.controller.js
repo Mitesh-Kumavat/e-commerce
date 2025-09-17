@@ -116,7 +116,7 @@ export const cancelOrder = async (req, res) => {
 // Admin - Get all orders
 export const getAllOrders = async (req, res) => {
     try {
-        const orders = await Order.find().populate("user", "name email");
+        const orders = await Order.find().populate("user", "name email").sort({ createdAt: -1 });
         return res.json(new ApiResponse(200, orders, "All orders fetched successfully"));
     } catch (err) {
         return res.status(500).json(new ApiResponse(500, null, err.message));
