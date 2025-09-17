@@ -9,6 +9,8 @@ A full-featured **E-Commerce Web Application** with secure user authentication, 
 - **Frontend (Vercel):** [E-Commerce App](https://e-commerce-delta-khaki.vercel.app/)  
 - **Backend (Render):** Hosted on Render (⚠️ **Important Note**: Since the backend is deployed on Render free tier, the server may take **1–2 minutes to boot** after inactivity. Please wait patiently after opening the frontend or making your first request.)  
 - **Database:** MongoDB Atlas  
+- **Youtube Demo:** [Watch Here](https://youtu.be/bf49y0Xlcto)
+- - **Postman Collection:** [Import Here](https://dev-help.postman.co/workspace/My-Workspace~d69904c8-d5d8-451c-862b-e900af2db1fb/collection/38953325-45d10989-b490-4409-b6f2-e203845d909c?action=share&creator=38953325)
 
 ---
 
