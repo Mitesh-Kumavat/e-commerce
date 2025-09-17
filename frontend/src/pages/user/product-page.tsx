@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getProducts } from '@/api/product'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Loader2 } from 'lucide-react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useSelector } from 'react-redux'
+import type { RootState } from '@/store/store'
 
 interface Product {
     _id: string;
@@ -20,11 +22,19 @@ export const ProductsPage = () => {
         searchParams.get('sort') as any || 'latest'
     );
     const keyword = searchParams.get('keyword') || '';
+    const user = useSelector((state: RootState) => state.auth.user);
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['products', { keyword, sort: sortOption }],
         queryFn: () => getProducts({ keyword, sort: sortOption }),
     });
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user && user.role === 'admin') {
+            navigate('/admin');
+        }
+    }, []);
 
     if (isLoading) {
         return (

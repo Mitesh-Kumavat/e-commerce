@@ -22,6 +22,7 @@ import { CheckoutPage } from "./pages/user/checkout";
 import { AdminLayout } from "./components/layout/admin-layout";
 import AddProductPage from "./components/admin/add-product";
 import ManageProductsPage from "./components/admin/manage-products";
+import ManageUsersPage from "./components/admin/manage-users";
 
 const App = () => {
 
@@ -30,8 +31,8 @@ const App = () => {
       <>
 
         {/* Admin only */}
-        <Route path="/" element={<AdminRoute />}>
-          <Route path="/admin" element={
+        <Route path="/admin" element={<AdminRoute />}>
+          <Route index element={
             <AdminLayout>
               <AdminDashboard />
             </AdminLayout>
@@ -51,7 +52,7 @@ const App = () => {
 
           <Route path="/admin/manage-users" element={
             <AdminLayout>
-              <AdminDashboard />
+              <ManageUsersPage />
             </AdminLayout>
           } />
 
