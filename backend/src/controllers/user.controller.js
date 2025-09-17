@@ -22,9 +22,11 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
-export const getUserById = async (req, res) => {
+export const getCurrentUser = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select('-password').lean();
+        const userId = req.user.id;
+
+        const user = await User.findById(userId).select('-password').lean();
 
         if (!user || user.isDeleted) {
             return res.status(404).json(new ApiResponse(404, null, "User not found"));
@@ -62,9 +64,9 @@ export const deleteUser = async (req, res) => {
     }
 };
 
-export const updateUser = async (req, res) => {
+export const updateCurrentUser = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.user.id);
 
         if (!user || user.isDeleted) {
             return res.status(404).json(new ApiResponse(404, null, "User not found"));
