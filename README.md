@@ -4,6 +4,14 @@ A full-featured **E-Commerce Web Application** with secure user authentication, 
 
 ---
 
+## 🌐 Live Project
+
+- **Frontend (Vercel):** [E-Commerce App](https://e-commerce-delta-khaki.vercel.app/)  
+- **Backend (Render):** Hosted on Render (⚠️ **Important Note**: Since the backend is deployed on Render free tier, the server may take **1–2 minutes to boot** after inactivity. Please wait patiently after opening the frontend or making your first request.)  
+- **Database:** MongoDB Atlas  
+
+---
+
 ## Features
 
 ### **Authentication**
@@ -17,14 +25,14 @@ A full-featured **E-Commerce Web Application** with secure user authentication, 
 - View product stock and inventory.
 - Manage user accounts (view and delete users).
 - Monitor overall platform statistics (products, users, orders).
+- Change **order status** (e.g., Pending → Shipped → Delivered).
 
 ### **User Dashboard**
 - Search products by name.
 - Sort products by:
-    - Latest
-    - Price (High → Low)
-    - Price (Low → High)
-- Filter products by category.
+  - Latest
+  - Price (High → Low)
+  - Price (Low → High)
 - Add products to cart.
 - Checkout products and make orders.
 - Cancel orders if needed.
@@ -38,3 +46,6 @@ A full-featured **E-Commerce Web Application** with secure user authentication, 
 - Checkout orders with proper validation.
 - Cancel orders before processing.
 - Order history for users.
+- Admin can update the **status of orders**.
+
+---
