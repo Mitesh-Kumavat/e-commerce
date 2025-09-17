@@ -111,7 +111,7 @@ export const CheckoutPage = () => {
                     <CardContent>
                         <form onSubmit={handleCheckout} className="space-y-4">
                             <div>
-                                <Label htmlFor="address">Full Address</Label>
+                                <Label htmlFor="address" className="font-semibold my-2 py-2">Full Address</Label>
                                 <Textarea
                                     id="address"
                                     placeholder="Enter your full shipping address..."

@@ -9,15 +9,16 @@ export const getAllUsers = async () => {
     return response.data;
 };
 
-export const getUserById = async (id: string) => {
-    const response = await axios.get(API_ROUTES.user.getUserById(id), {
+export const getCurrentUser = async () => {
+    const response = await axios.get(API_ROUTES.user.getCurrentUser, {
         withCredentials: true,
     });
+
     return response.data;
 };
 
-export const updateUserById = async (id: string, data: any) => {
-    const response = await axios.put(API_ROUTES.user.updateUserById(id), data, {
+export const updateCurrentUser = async (data: any) => {
+    const response = await axios.put(API_ROUTES.user.updateCurrentUser, data, {
         withCredentials: true,
     });
 

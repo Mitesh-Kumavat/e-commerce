@@ -11,9 +11,9 @@ export const API_ROUTES = {
     },
     user: {
         getAllUsers: `${BACKEND_URL}/users`,
-        getUserById: (id: string) => `${BACKEND_URL}/users/${id}`,
+        getCurrentUser: `${BACKEND_URL}/users/me`,
         deleteUserById: (id: string) => `${BACKEND_URL}/users/${id}`,
-        updateUserById: (id: string) => `${BACKEND_URL}/users/${id}`,
+        updateCurrentUser: `${BACKEND_URL}/users/me`,
     },
     product: {
         getProduct: `${BACKEND_URL}/products`,
