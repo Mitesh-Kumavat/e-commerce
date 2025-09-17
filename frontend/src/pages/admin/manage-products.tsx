@@ -27,7 +27,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { EditProductDialog } from "./edit-product-dialog"
+import { EditProductDialog } from "../../components/admin/edit-product-dialog"
 import { toast } from "sonner"
 
 interface Product {

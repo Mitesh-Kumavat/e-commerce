@@ -24,3 +24,17 @@ export const cancelOrder = async (orderId: string) => {
 
     return respone.data;
 }
+
+export const updateOrderStatus = async (orderId: string, status: string) => {
+    const respone = await axios.put(API_ROUTES.order.updateOrderStatus(orderId), { status }, {
+        withCredentials: true
+    })
+    return respone.data;
+}
+
+export const getAllOrders = async () => {
+    const respone = await axios.get(API_ROUTES.order.getAllOrders, {
+        withCredentials: true
+    })
+    return respone.data;
+}

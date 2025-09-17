@@ -10,7 +10,7 @@ import { PublicRoute } from "./components/wrappers/public-route";
 import { AdminRoute } from "./components/wrappers/admin-route";
 import { ProtectedRoute } from "./components/wrappers/protected-route";
 import NotFoundPage from "./pages/not-found";
-import AdminDashboard from "./components/admin/admin-dashboard";
+import AdminDashboard from "./pages/admin/admin-dashboard";
 import UserLayout from "./components/layout/user-layout";
 import { ProductsPage } from "./pages/user/product-page";
 import { ProductDetailPage } from "./pages/user/product-detail-page";
@@ -20,9 +20,10 @@ import CartPage from "./pages/user/cart";
 import ProfilePage from "./pages/user/profile";
 import { CheckoutPage } from "./pages/user/checkout";
 import { AdminLayout } from "./components/layout/admin-layout";
-import AddProductPage from "./components/admin/add-product";
-import ManageProductsPage from "./components/admin/manage-products";
-import ManageUsersPage from "./components/admin/manage-users";
+import AddProductPage from "./pages/admin/add-product";
+import ManageProductsPage from "./pages/admin/manage-products";
+import ManageUsersPage from "./pages/admin/manage-users";
+import ManageOrdersPage from "./pages/admin/manage-orders";
 
 const App = () => {
 
@@ -47,6 +48,12 @@ const App = () => {
           <Route path="/admin/manage-products" element={
             <AdminLayout>
               <ManageProductsPage />
+            </AdminLayout>
+          } />
+
+          <Route path="/admin/manage-orders" element={
+            <AdminLayout>
+              <ManageOrdersPage />
             </AdminLayout>
           } />
 

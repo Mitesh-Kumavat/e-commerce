@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query"
 import { getDashboardStats } from "@/api/dashboard"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -40,9 +39,12 @@ export default function AdminDashboardPage() {
     const { summary, recentOrders, topProducts } = data?.data || {}
 
     return (
-        <div className="container mx-auto px-4 pt-0 py-6  space-y-6">
+        <div className="space-y-6">
 
-            <h1 className="text-3xl font-bold text-balance">Dashboard</h1>
+            <div>
+                <h1 className="text-3xl font-bold text-balance"> Dashboard</h1>
+                <p className="text-muted-foreground mt-1">Analyze and view statics data of shop </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card>
@@ -103,16 +105,20 @@ export default function AdminDashboardPage() {
                                                 variant={
                                                     order.status.toLowerCase() === "delivered"
                                                         ? "default"
-                                                        : order.status.toLowerCase() === "canceled"
+                                                        : order.status.toLowerCase() === "cancelled"
                                                             ? "destructive"
-                                                            : "secondary"
+                                                            : order.status.toLowerCase() === "shipped"
+                                                                ? "default"
+                                                                : "secondary"
                                                 }
                                                 className={
                                                     order.status.toLowerCase() === "delivered"
-                                                        ? "bg-green-500"
-                                                        : order.status.toLowerCase() === "canceled"
-                                                            ? "bg-red-500"
-                                                            : "bg-yellow-500 text-black"
+                                                        ? "bg-green-500 hover:bg-green-600"
+                                                        : order.status.toLowerCase() === "cancelled"
+                                                            ? "bg-red-500 hover:bg-red-600"
+                                                            : order.status.toLowerCase() === "shipped"
+                                                                ? "" // Use default theme accent color for shipped status
+                                                                : "bg-yellow-500 hover:bg-yellow-600 text-black"
                                                 }
                                             >
                                                 {order.status}

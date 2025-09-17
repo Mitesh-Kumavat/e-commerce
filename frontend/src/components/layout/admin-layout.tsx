@@ -6,6 +6,7 @@ import {
     Package,
     Users,
     LogOut,
+    Package2Icon,
 } from "lucide-react"
 import {
     Sidebar,
@@ -34,6 +35,7 @@ const sidebarItems = [
     { title: "Dashboard", icon: LayoutDashboard, href: "/admin" },
     { title: "Add Product", icon: Plus, href: "/admin/add-product" },
     { title: "Manage Products", icon: Package, href: "/admin/manage-products" },
+    { title: "Manage Orders", icon: Package2Icon, href: "/admin/manage-orders" },
     { title: "Manage Users", icon: Users, href: "/admin/manage-users" },
 ]
 

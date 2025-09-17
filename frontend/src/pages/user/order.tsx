@@ -29,7 +29,7 @@ interface Order {
     items: OrderItem[];
     totalAmount: number;
     address: string;
-    status: "Pending" | "Delivered" | "Cancelled";
+    status: "pending" | "delivered" | "cancelled" | "shipped";
     deliveryDate?: string;
     createdAt: string;
 }
@@ -62,11 +62,11 @@ const OrdersPage = () => {
 
     const getBadgeClass = (status: Order['status']) => {
         switch (status) {
-            case "Pending":
+            case "pending":
                 return "bg-yellow-300 text-black";
-            case "Delivered":
+            case "delivered":
                 return "bg-green-500 text-white";
-            case "Cancelled":
+            case "cancelled":
                 return "bg-red-600 text-white";
             default:
                 return "bg-gray-500 text-white";
@@ -164,7 +164,7 @@ const OrdersPage = () => {
                                             </div>
                                         )}
                                     </div>
-                                    {order.status === "Pending" && (
+                                    {order.status === "pending" && (
                                         <Button
                                             variant="destructive"
                                             className="w-full mt-4"

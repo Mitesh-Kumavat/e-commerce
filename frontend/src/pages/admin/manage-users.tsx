@@ -79,9 +79,10 @@ export default function ManageUsersPage() {
     const users: User[] = data?.data || []
 
     return (
-        <div className="space-y-6 p-6 pt-2">
+        <div className="space-y-6">
             <div>
                 <h1 className="text-3xl font-bold text-balance">Manage Users</h1>
+                <p className="text-muted-foreground mt-1">Manage all the users of the shop</p>
             </div>
 
             <Card className="shadow-sm border-0 bg-white">

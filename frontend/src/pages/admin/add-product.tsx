@@ -184,12 +184,12 @@ const AddProductPage = () => {
     }
 
     return (
-        <div className="container mx-auto p-2 md:p-2 max-w-6xl">
+        <div className="space-y-6">
 
             <div>
-                <h1 className="text-3xl font-bold text-balance">Add new Product</h1>
+                <h1 className="text-3xl font-bold text-balance">Add Products</h1>
+                <p className="text-muted-foreground mt-1">Add products by filling up the form</p>
             </div>
-
             <Card className="shadow-lg border-0 bg-card">
                 <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-t-lg">
                     <CardTitle className="text-xl text-card-foreground">Product Information</CardTitle>

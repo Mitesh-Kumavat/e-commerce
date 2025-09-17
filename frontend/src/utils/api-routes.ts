@@ -31,6 +31,8 @@ export const API_ROUTES = {
         checkout: `${BACKEND_URL}/orders/checkout`,
         getAllOrderOfUser: `${BACKEND_URL}/orders`,
         cancelOrder: (orderId: string) => `${BACKEND_URL}/orders/cancel/${orderId}`,
+        updateOrderStatus: (orderId: string) => `${BACKEND_URL}/orders/status/${orderId}`,
+        getAllOrders: `${BACKEND_URL}/orders/admin/all`,
     }
 
 }
