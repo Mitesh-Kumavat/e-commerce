@@ -29,7 +29,7 @@ export const getAdminDashboard = async (req, res) => {
 
         const topProducts = await Product.find({
             _id: { $in: topProductsAgg.map(p => p._id) }
-        }).select("name images price");
+        }).select("name images price stock");
 
         return res.json(
             new ApiResponse(200, {
