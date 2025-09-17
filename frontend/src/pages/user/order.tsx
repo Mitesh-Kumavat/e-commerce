@@ -157,7 +157,7 @@ const OrdersPage = () => {
                                         {order.deliveryDate && (
                                             <div className="mt-2 text-sm text-muted-foreground flex items-center gap-2">
                                                 <Calendar className="h-4 w-4 text-primary" />
-                                                <span className="font-bold text-foreground">Est. Delivery:</span>
+                                                <span className="font-bold text-foreground"> Delivery Date:</span>
                                                 <span className="text-muted-foreground">
                                                     {format(new Date(order.deliveryDate), "PPP")}
                                                 </span>

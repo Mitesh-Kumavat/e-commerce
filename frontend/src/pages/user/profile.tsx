@@ -112,7 +112,7 @@ export default function ProfilePage() {
 
                 <Card className="shadow-sm">
                     <CardHeader className="pb-4">
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between max-sm:flex-col max-sm:items-start gap-4">
                             <div className="flex items-center gap-4">
                                 <Avatar className="h-16 w-16">
                                     <AvatarFallback className="text-lg font-semibold bg-primary text-primary-foreground">
