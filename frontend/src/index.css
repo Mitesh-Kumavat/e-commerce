@@ -115,6 +115,10 @@
     @apply border-border outline-ring/50;
   }
 
+  .sonner-description {
+    color: gray !important;
+  }
+
   body {
     @apply bg-background text-foreground;
   }

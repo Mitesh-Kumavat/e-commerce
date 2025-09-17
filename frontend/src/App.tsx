@@ -123,7 +123,11 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          descriptionClassName: "sonner-description",
+        }}
+      />
     </>
   )
 }
