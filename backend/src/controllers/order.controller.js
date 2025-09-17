@@ -84,7 +84,7 @@ export const cancelOrder = async (req, res) => {
     try {
         const order = await Order.findById(req.params.id);
 
-        if (order.status === "Cancelled") {
+        if (order.status === "cancelled") {
             return res.status(400).json(new ApiResponse(400, null, "Order is already cancelled"));
         }
 
@@ -92,11 +92,11 @@ export const cancelOrder = async (req, res) => {
             return res.status(404).json(new ApiResponse(404, null, "Order not found"));
         }
 
-        if (order.status === "Delivered" || order.deliveryDate < new Date()) {
+        if (order.status === "delivered" || order.deliveryDate < new Date()) {
             return res.status(400).json(new ApiResponse(400, null, "Delivered Order cannot be cancelled"));
         }
 
-        order.status = "Cancelled";
+        order.status = "cancelled";
 
         for (let i = 0; i < order.items.length; i++) {
             const product = await Product.findById(order.items[i].product);
@@ -132,6 +132,48 @@ export const getUserExpenses = async (req, res) => {
         const total = orders.reduce((acc, order) => acc + order.totalAmount, 0);
 
         return res.json(new ApiResponse(200, { userId, total }, "User expenses fetched successfully"));
+    } catch (err) {
+        return res.status(500).json(new ApiResponse(500, null, err.message));
+    }
+};
+
+// Admin - Update order status
+export const updateOrderStatus = async (req, res) => {
+    try {
+        const { status } = req.body;
+        const orderId = req.params.id;
+        const validStatuses = ["pending", "shipped", "delivered", "cancelled"];
+
+        if (!validStatuses.includes(status)) {
+            return res.status(400).json(new ApiResponse(400, null, "Invalid status"));
+        }
+
+        const order = await Order.findById(orderId);
+
+        if (!order) {
+            return res.status(404).json(new ApiResponse(404, null, "Order not found"));
+        }
+
+        if (order.status === "cancelled") {
+            return res.status(400).json(new ApiResponse(400, null, "Cannot update a cancelled order"));
+        }
+
+        if (order.status === "delivered") {
+            return res.status(400).json(new ApiResponse(400, null, "Cannot update a delivered order"));
+        }
+
+        if (order.status === status) {
+            return res.status(400).json(new ApiResponse(400, null, `Order is already ${status}`));
+        }
+
+        if (status === "delivered") {
+            order.deliveryDate = new Date();
+        }
+
+        order.status = status;
+
+        await order.save();
+        return res.json(new ApiResponse(200, order, "Order status updated successfully"));
     } catch (err) {
         return res.status(500).json(new ApiResponse(500, null, err.message));
     }
