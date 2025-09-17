@@ -10,7 +10,7 @@ import { PublicRoute } from "./components/wrappers/public-route";
 import { AdminRoute } from "./components/wrappers/admin-route";
 import { ProtectedRoute } from "./components/wrappers/protected-route";
 import NotFoundPage from "./pages/not-found";
-import AdminDashboard from "./pages/admin/admin-dashboard";
+import AdminDashboard from "./components/admin/admin-dashboard";
 import UserLayout from "./components/layout/user-layout";
 import { ProductsPage } from "./pages/user/product-page";
 import { ProductDetailPage } from "./pages/user/product-detail-page";

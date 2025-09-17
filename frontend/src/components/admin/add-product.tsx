@@ -185,8 +185,9 @@ const AddProductPage = () => {
 
     return (
         <div className="container mx-auto p-2 md:p-2 max-w-6xl">
-            <div className="flex items-center justify-between mb-2">
-                <h1 className="text-2xl font-bold text-foreground">Add New Product</h1>
+
+            <div>
+                <h1 className="text-3xl font-bold text-balance">Add new Product</h1>
             </div>
 
             <Card className="shadow-lg border-0 bg-card">
