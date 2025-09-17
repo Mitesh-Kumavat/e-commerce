@@ -6,8 +6,17 @@ export const API_ROUTES = {
         signup: `${BACKEND_URL}/auth/signup`,
         logout: `${BACKEND_URL}/auth/logout`
     },
+    dashboard: {
+        getStats: `${BACKEND_URL}/dashboard`,
+    },
+    user: {
+        getAllUsers: `${BACKEND_URL}/users`,
+        getUserById: (id: string) => `${BACKEND_URL}/users/${id}`,
+        deleteUserById: (id: string) => `${BACKEND_URL}/users/${id}`,
+        updateUserById: (id: string) => `${BACKEND_URL}/users/${id}`,
+    },
     product: {
-        getProduct: `${BACKEND_URL}/products`, // can be modify according sorting and fitlering
+        getProduct: `${BACKEND_URL}/products`,
         getProductById: (id: string) => `${BACKEND_URL}/products/${id}`,
         deleteProductById: (id: string) => `${BACKEND_URL}/products/${id}`,
         updateProductById: (id: string) => `${BACKEND_URL}/products/${id}`,
