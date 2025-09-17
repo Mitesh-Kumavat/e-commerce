@@ -2,6 +2,13 @@ import { User } from "../models/user.model.js";
 import { createToken } from "../utils/jwtHandler.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 
+const cookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    maxAge: 24 * 60 * 60 * 1000,
+};
+
 export const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -19,12 +26,7 @@ export const registerUser = async (req, res) => {
 
         const token = createToken(user);
 
-        res.cookie("authToken", token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "none",
-            maxAge: 24 * 60 * 60 * 1000,
-        });
+        res.cookie("authToken", token, cookieOptions);
 
         return res.status(201).json(
             new ApiResponse(201, {
@@ -59,12 +61,7 @@ export const loginUser = async (req, res) => {
 
         const token = createToken(user);
 
-        res.cookie("authToken", token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "none",
-            maxAge: 24 * 60 * 60 * 1000,
-        });
+        res.cookie("authToken", token, cookieOptions);
 
         return res.json(
             new ApiResponse(200, {
@@ -81,7 +78,7 @@ export const loginUser = async (req, res) => {
 
 export const logoutUser = async (_req, res) => {
     try {
-        res.clearCookie("authToken");
+        res.clearCookie("authToken", cookieOptions);
         return res.json(new ApiResponse(200, null, "Logout successful"));
     } catch (error) {
         return res.status(500).json(new ApiResponse(500, null, error.message));
